@@ -1,0 +1,8 @@
+# Login page
+url:  https://lavkababuin.com/login/
+input Email  -
+input Password -
+button Войти -
+
+# HomePage
+user personal dropdown btn -

@@ -1,0 +1,11 @@
+TC 01 - log in
+
+1. Go to https://lavkababuin.com/login/
+2. Fill in Email field : andrei_sush1@ukr.net
+3. Fill in Password field : 123456QA
+4. Click on "Войти"
+Expected result:
+- home page is shown
+- in the upper right corner there is an btn "Здравствуйте, nameUser"
+
+TC 02 -
