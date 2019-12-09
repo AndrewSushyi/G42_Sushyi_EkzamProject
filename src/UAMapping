@@ -1,8 +1,9 @@
 # Login page
 url:  https://lavkababuin.com/login/
-input Email  -
-input Password -
-button Войти -
+input Email  - .//input[@id = 'input-email']
+input Password - .//input[@id = 'input-password']
+button Войти - .//*[@class='btn btn-main btn-xl ml-auto mr-minus']
 
 # HomePage
-user personal dropdown btn -
+url: https://lavkababuin.com/account/
+user personal dropdown btn - .//*[@class='btn-blue dropdown-toggle']
