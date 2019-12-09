@@ -1,4 +1,4 @@
-TC 01 - log in
+tc1_validLogin
 
 1. Go to https://lavkababuin.com/login/
 2. Fill in Email field : andrei_sush1@ukr.net

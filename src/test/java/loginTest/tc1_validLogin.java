@@ -3,8 +3,7 @@ package loginTest;
 import abstractParentTest.AbstractParentTest;
 import org.junit.Test;
 
-public class LoginWithPageObjectTest extends AbstractParentTest {
-    //TC1
+public class tc1_validLogin extends AbstractParentTest {
     @Test
     public void validLogin(){
         loginPage.openPage();
