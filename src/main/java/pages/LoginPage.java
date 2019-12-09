@@ -33,24 +33,14 @@ public class LoginPage extends ParentPage {
     }
 
     public void enterLoginInToInputLogin(String login) {
-
-
-        //pochistili
-        inputLogin.clear();
-        //vveli
-        inputLogin.sendKeys(login);
-        //Logger soobshenie!!
-        logger.info(login + " was inputed in to input Login");
+        actionsWithOurElements.enterTextInToInput(inputLogin, login);
     }
 
     public void enterPasswordInToInputPassword(String password) {
-        inputPassword.clear();
-        inputPassword.sendKeys(password);
-        logger.info(password + " was inputed into input Password");
+        actionsWithOurElements.enterTextInToInput(inputPassword, password);
     }
 
     public void clickOnButtonEnter() {
-        buttonEnter.click();
-        logger.info("btn was clicked");
+        actionsWithOurElements.clickOnElement(buttonEnter);
     }
 }
