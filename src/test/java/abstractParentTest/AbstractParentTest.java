@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.AccountPage;
 import pages.HomePage;
 import pages.LoginPage;
 
@@ -15,6 +16,7 @@ public class AbstractParentTest {
     WebDriver webDriver;
     // Объект страницы Login в тесте выполн. наши команды на ней)
     protected LoginPage loginPage;
+    protected AccountPage accountPage;
     protected HomePage homePage;
 
     @Before
@@ -30,6 +32,7 @@ public class AbstractParentTest {
         // !! т.е. loginPage будет работать с единым webdriver созданным в Тесте
        // т.о. этот конструктор попал в Page и потом в ParrentPage
         loginPage = new LoginPage(webDriver);
+        accountPage = new AccountPage(webDriver);
         homePage = new HomePage(webDriver);
     }
 
