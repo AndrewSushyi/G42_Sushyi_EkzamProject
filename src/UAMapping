@@ -1,9 +1,21 @@
-# Login page
-url:  https://lavkababuin.com/login/
-input Email  - .//input[@id = 'input-email']
-input Password - .//input[@id = 'input-password']
-button Войти - .//*[@class='btn btn-main btn-xl ml-auto mr-minus']
+# login page
+url:              https://lavkababuin.com/login/
+input Email  -    .//input[@id = 'input-email']
+input Password -  .//input[@id = 'input-password']
+button Войти -    .//*[@class='btn btn-main btn-xl ml-auto mr-minus']
 
-# HomePage
-url: https://lavkababuin.com/account/
-user personal dropdown btn - .//*[@class='btn-blue dropdown-toggle']
+# accountPage
+url:            https://lavkababuin.com/account/
+UserBtn:        .//*[@class='btn-blue dropdown-toggle']
+Search field:   .//input[@name='search']
+button Найти:   .//button[@class='btn-search']
+
+first searchResultBook: .//div[@class='row products-cards products__body']/div[1]//a[@class='title-product']
+third searchResultBook: .//div[@class='row products-cards products__body']/div[3]//a[@class='title-product']
+
+# homePage
+url:            https://lavkababuin.com/
+Search field:   .//button[@class='btn-search' and @type='submit']
+button Найти:   .//button[@class='btn-search']
+
+firstElementSearchResult: .//div[@class='row products-cards products__body']/div[1]//a[@class='title-product']

@@ -13,6 +13,20 @@ public class ActionsWithOurElements {
         this.webDriver = webDriver;
     }
 
+// вынес из LoginPage
+    public void openPage(String  linkURL) {
+        //т.к. действие то Обработаем сразу Экспшин
+        try {
+            webDriver.get(linkURL);
+
+        }catch (Exception e){
+            // именно в методе Open исп ассертФейл = безоговоречная остановка теста  т.к. не Открылась страница и дал.дейстивя не имеют смысла
+            // это сообщение попадет в Отчет
+            Assert.fail("can not work with browser");
+        }
+
+    }
+
     public void enterTextInToInput(WebElement webElement, String text){
         try {
             webElement.clear();
@@ -42,6 +56,20 @@ public class ActionsWithOurElements {
             return state;
         }catch (Exception e){
             logger.info("Is element displayed -> false");
+            return false;
+        }
+    }
+
+    public boolean isTextInElement (WebElement webElement, String expectedText){
+        //boolean isText = Assert.assertTrue(webElement.getText().contains(expectedText));
+        //.//div[@class='row products-cards products__body']/div[1]//a[@class='title-product' and contains(text(), 'Думай и богатей')]
+        try{
+            boolean state = webElement.getText().contains(expectedText);
+            logger.info("Is text in element -> " + state);
+            return state;
+
+        }catch (Exception e){
+            logger.info("Is text in element -> false");
             return false;
         }
     }

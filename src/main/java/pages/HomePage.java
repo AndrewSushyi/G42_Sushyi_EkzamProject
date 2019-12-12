@@ -1,22 +1,34 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import parentPage.ParentPage;
 
 public class HomePage extends ParentPage {
-    @FindBy (xpath = ".//*[@class='btn-blue dropdown-toggle']")
-    private WebElement userBtn;
+    @FindBy (xpath = ".//input[@name='search']")
+    private WebElement inputSearch;
+    @FindBy (xpath= ".//button[@class='btn-search']")
+    private WebElement buttonSearch;
+    @FindBy (xpath= ".//div[@class='row products-cards products__body']/div[1]//a[@class='title-product']")
+    private WebElement firstElementInSearchResult;
 
-    public HomePage(WebDriver webDriver) {
-        super(webDriver);
+    public HomePage(WebDriver webDriver) {super(webDriver);}
+
+    public void openPage(String linkURL){
+        actionsWithOurElements.openPage(linkURL);
     }
-// учим Страницу проверять наличия Элемента
-    public boolean isUserBtnDisplayed(){
-      return actionsWithOurElements.isElementDisplayed(userBtn);
+
+    public void enterTextInToInputSearch(String text){
+        actionsWithOurElements.enterTextInToInput(inputSearch,text);
+    }
+
+    public void clickOnButtonSearch() {
+        actionsWithOurElements.clickOnElement(buttonSearch);
+    }
+
+    public boolean isSearchWordsInSearchResult(String text){
+        return actionsWithOurElements.isTextInElement(firstElementInSearchResult, text);
     }
 
 }
-

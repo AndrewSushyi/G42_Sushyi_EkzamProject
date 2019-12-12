@@ -8,4 +8,12 @@ Expected result:
 - home page is shown
 - in the upper right corner there is an btn "Здравствуйте, nameUser"
 
-TC 02 -
+tc2_validSearchInSearchField
+PreConditions: Authorized on site (like steps  tc1)
+1. Go to https: https://lavkababuin.com/account/
+2. Fill in Search field: Думай и богатей
+3. Click on "Найти"
+Expected result:
+- title page: Поиск- думай и богатей
+- text in searchField: думай и богатей
+- under searchField shown books with title: думай и богатей
