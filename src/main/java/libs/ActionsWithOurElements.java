@@ -60,6 +60,20 @@ public class ActionsWithOurElements {
         }
     }
 
+    public boolean isTextInElement (WebElement webElement, String expectedText){
+        //boolean isText = Assert.assertTrue(webElement.getText().contains(expectedText));
+        //.//div[@class='row products-cards products__body']/div[1]//a[@class='title-product' and contains(text(), 'Думай и богатей')]
+        try{
+            boolean state = webElement.getText().contains(expectedText);
+            logger.info("Is text in element -> " + state);
+            return state;
+
+        }catch (Exception e){
+            logger.info("Is text in element -> false");
+            return false;
+        }
+    }
+
     private void stopTestAndPrintMessage() {
         logger.error("Can not work with element ");
         Assert.fail("Can not work with element ");

@@ -11,7 +11,7 @@ Expected result:
 tc2_validSearchInSearchField
 PreConditions: Authorized on site (like steps  tc1)
 1. Go to https: https://lavkababuin.com/account/
-2. Fill in Search field: думай и богатей
+2. Fill in Search field: Думай и богатей
 3. Click on "Найти"
 Expected result:
 - title page: Поиск- думай и богатей

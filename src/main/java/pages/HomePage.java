@@ -27,8 +27,8 @@ public class HomePage extends ParentPage {
         actionsWithOurElements.clickOnElement(buttonSearch);
     }
 
-    public boolean isSearchWordsInSearchResult(){
-        return actionsWithOurElements.isElementDisplayed(firstElementInSearchResult);
+    public boolean isSearchWordsInSearchResult(String text){
+        return actionsWithOurElements.isTextInElement(firstElementInSearchResult, text);
     }
 
 }
