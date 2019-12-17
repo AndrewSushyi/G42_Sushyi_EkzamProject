@@ -18,6 +18,7 @@ url:                       https://lavkababuin.com/
 Search field:              .//button[@class='btn-search' and @type='submit']
 button "найти":            .//button[@class='btn-search']
 button "каталог товаров"   .//button[@id='btn-menu-catalog']
+menu "книги"               .//ul[@class=menu-catalog']//a[contains(text(),'Книги']
 
 firstElementSearchResult:  .//div[@class='row products-cards products__body']/div[1]//a[@class='title-product']
 

@@ -14,6 +14,9 @@ public class HomePage extends ParentPage {
     private WebElement firstElementInSearchResult;
     @FindBy (xpath = ".//button[@id='btn-menu-catalog']")
     private WebElement menuCatalog;
+    //@FindBy (xpath = "//ul[@class=menu-catalog']//a[contains(text(),'Книги']")
+    @FindBy (xpath = "//ul[@class='menu-catalog']/li[1]/a")
+    private WebElement submenuKnigi;
 
     public HomePage(WebDriver webDriver) {super(webDriver);}
 
@@ -29,13 +32,13 @@ public class HomePage extends ParentPage {
         actionsWithOurElements.clickOnElement(buttonSearch);
     }
 
-    public boolean isSearchWordsInSearchResult(String text){
-        return actionsWithOurElements.isTextInElement(firstElementInSearchResult, text);
+    public void hoverOnButtonMenuCatalog(){actionsWithOurElements.hoverOnElement(menuCatalog);}
+    public void clickOnSubmenuKnigi() {
+        actionsWithOurElements.clickOnElement(submenuKnigi);
     }
 
-
-    public void clickOnMenuCatalog() {
-        actionsWithOurElements.clickOnElement(menuCatalog);
+    public boolean isSearchWordsInSearchResult(String text){
+        return actionsWithOurElements.isTextInElement(firstElementInSearchResult, text);
     }
 
 }

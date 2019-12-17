@@ -4,13 +4,16 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class ActionsWithOurElements {
     WebDriver webDriver;
+    Actions action;
     Logger logger = Logger.getLogger(getClass());
 
     public ActionsWithOurElements(WebDriver webDriver) {
         this.webDriver = webDriver;
+        action = new Actions(webDriver);
     }
 
 // вынес из LoginPage
@@ -43,6 +46,16 @@ public class ActionsWithOurElements {
         try {
             webElement.click();
             logger.info("Element was clicked");
+
+        } catch (Exception e){
+            stopTestAndPrintMessage();
+        }
+    }
+///////////////
+    public void hoverOnElement (WebElement webElement){
+        try {
+            action.moveToElement(webElement).perform();
+            logger.info("moved and hovered on element");
 
         } catch (Exception e){
             stopTestAndPrintMessage();
