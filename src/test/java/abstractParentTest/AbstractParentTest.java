@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.AccountPage;
 import pages.HomePage;
+import pages.KnigiPage;
 import pages.LoginPage;
 
 import java.io.File;
@@ -18,6 +19,7 @@ public class AbstractParentTest {
     protected LoginPage loginPage;
     protected AccountPage accountPage;
     protected HomePage homePage;
+    protected KnigiPage knigiPage;
 
     @Before
     public void setUP(){
@@ -34,6 +36,7 @@ public class AbstractParentTest {
         loginPage = new LoginPage(webDriver);
         accountPage = new AccountPage(webDriver);
         homePage = new HomePage(webDriver);
+        knigiPage = new KnigiPage(webDriver);
     }
 
     @After

@@ -61,8 +61,6 @@ public class ActionsWithOurElements {
     }
 
     public boolean isTextInElement (WebElement webElement, String expectedText){
-        //boolean isText = Assert.assertTrue(webElement.getText().contains(expectedText));
-        //.//div[@class='row products-cards products__body']/div[1]//a[@class='title-product' and contains(text(), 'Думай и богатей')]
         try{
             boolean state = webElement.getText().contains(expectedText);
             logger.info("Is text in element -> " + state);
