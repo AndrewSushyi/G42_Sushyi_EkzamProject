@@ -1,9 +1,9 @@
-package loginTest;
+package searchFieldTest;
 
 import abstractParentTest.AbstractParentTest;
 import org.junit.Test;
 
-public class tc2_validSearchInSearchField extends AbstractParentTest {
+public class TC2_validSearchInSearchField extends AbstractParentTest {
     @Test
     public void validSearchInSearchField(){
        homePage.openPage("https://lavkababuin.com/");

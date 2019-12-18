@@ -1,19 +1,39 @@
-tc1_validLogin
+tc1_validLoginTest
 
-1. Go to https://lavkababuin.com/login/
-2. Fill in Email field : andrei_sush1@ukr.net
-3. Fill in Password field : 123456QA
-4. Click on "Войти"
+- Go to https://lavkababuin.com/login/
+- Fill in Email field : andrei_sush1@ukr.net
+- Fill in Password field : 123456QA
+- Click on "Войти"
 Expected result:
 - home page is shown
 - in the upper right corner there is an btn "Здравствуйте, nameUser"
-
-tc2_validSearchInSearchField
+-----------------------------------------------------------
+tc2_validSearchInSearchFieldTest
 PreConditions: Authorized on site (like steps  tc1)
-1. Go to https: https://lavkababuin.com/account/
-2. Fill in Search field: Думай и богатей
-3. Click on "Найти"
+- Go to https: https://lavkababuin.com
+- Fill in Search field: Думай и богатей
+- Click on "Найти"
 Expected result:
 - title page: Поиск- думай и богатей
 - text in searchField: думай и богатей
 - under searchField shown books with title: думай и богатей
+
+-----------------------------------------------------------
+tc4_СhoiceElementForFilterTest
+PreConditions: Authorized on site (like steps  tc1)
+- Go to https: https://lavkababuin.com
+- Click on button "каталог товаров"
+- Click on "Книги" in menu"
+- Click on "Бизнес" at thematic books content result
+- Click on checkBox "акция"
+- move left slider of cost to 200
+- move right slider to 600
+Expected result:
+- content result header:"бизнес акция от 200 до 400"
+- result have label "акция" и cost 200-600uah
+-----------------------------------------------------------
+tc5_DeleteFromCartTest
+PreConditions: Authorized on site (like steps  tc1)
+1 Go to https: https://lavkababuin.com
+Expected result:
+-----------------------------------------------------------

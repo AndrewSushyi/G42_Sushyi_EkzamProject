@@ -12,6 +12,11 @@ public class HomePage extends ParentPage {
     private WebElement buttonSearch;
     @FindBy (xpath= ".//div[@class='row products-cards products__body']/div[1]//a[@class='title-product']")
     private WebElement firstElementInSearchResult;
+    @FindBy (xpath = ".//button[@id='btn-menu-catalog']")
+    private WebElement menuCatalog;
+    //@FindBy (xpath = "//ul[@class=menu-catalog']//a[contains(text(),'Книги']")
+    @FindBy (xpath = "//ul[@class='menu-catalog']/li[1]/a")
+    private WebElement submenuKnigi;
 
     public HomePage(WebDriver webDriver) {super(webDriver);}
 
@@ -25,6 +30,11 @@ public class HomePage extends ParentPage {
 
     public void clickOnButtonSearch() {
         actionsWithOurElements.clickOnElement(buttonSearch);
+    }
+
+    public void hoverOnButtonMenuCatalog(){actionsWithOurElements.hoverOnElement(menuCatalog);}
+    public void clickOnSubmenuKnigi() {
+        actionsWithOurElements.clickOnElement(submenuKnigi);
     }
 
     public boolean isSearchWordsInSearchResult(String text){

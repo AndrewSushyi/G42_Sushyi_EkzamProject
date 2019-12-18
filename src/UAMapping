@@ -8,14 +8,30 @@ button Войти -    .//*[@class='btn btn-main btn-xl ml-auto mr-minus']
 url:            https://lavkababuin.com/account/
 UserBtn:        .//*[@class='btn-blue dropdown-toggle']
 Search field:   .//input[@name='search']
-button Найти:   .//button[@class='btn-search']
+button "найти":   .//button[@class='btn-search']
 
 first searchResultBook: .//div[@class='row products-cards products__body']/div[1]//a[@class='title-product']
 third searchResultBook: .//div[@class='row products-cards products__body']/div[3]//a[@class='title-product']
 
 # homePage
-url:            https://lavkababuin.com/
-Search field:   .//button[@class='btn-search' and @type='submit']
-button Найти:   .//button[@class='btn-search']
+url:                       https://lavkababuin.com/
+Search field:              .//button[@class='btn-search' and @type='submit']
+button "найти":            .//button[@class='btn-search']
+button "каталог товаров"   .//button[@id='btn-menu-catalog']
+menu "книги"               .//ul[@class=menu-catalog']//a[contains(text(),'Книги')]
 
-firstElementSearchResult: .//div[@class='row products-cards products__body']/div[1]//a[@class='title-product']
+firstElementSearchResult:  .//div[@class='row products-cards products__body']/div[1]//a[@class='title-product']
+
+
+# Knigi
+link "бизнес"              .//div[@class='category__wall-block']//*[contains(text(), 'Бизнес')]
+
+FilterSidebar:
+checkboxStock "Акция"  .//input[@type='checkbox' and @id='iv-r16']
+leftSlider   .//*[@class='noUi-handle noUi-handle-lower']
+rightSlider  .//*[@class='noUi-handle noUi-handle-upper']
+
+result:
+firstElementSearchResult:
+stock:  .//*[@class='row products-cards products__body']/div[1]//*[@class='stock']
+price:  .//*[@class='row products-cards products__body']/div[1]//*[@class='price']

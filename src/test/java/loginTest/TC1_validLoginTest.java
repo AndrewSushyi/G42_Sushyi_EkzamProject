@@ -3,7 +3,7 @@ package loginTest;
 import abstractParentTest.AbstractParentTest;
 import org.junit.Test;
 
-public class tc1_validLogin extends AbstractParentTest {
+public class TC1_validLoginTest extends AbstractParentTest {
     @Test
     public void validLogin(){
         loginPage.openPage("https://lavkababuin.com/login/");

@@ -4,13 +4,16 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class ActionsWithOurElements {
     WebDriver webDriver;
+    Actions action;
     Logger logger = Logger.getLogger(getClass());
 
     public ActionsWithOurElements(WebDriver webDriver) {
         this.webDriver = webDriver;
+        action = new Actions(webDriver);
     }
 
 // вынес из LoginPage
@@ -48,6 +51,16 @@ public class ActionsWithOurElements {
             stopTestAndPrintMessage();
         }
     }
+///////////////
+    public void hoverOnElement (WebElement webElement){
+        try {
+            action.moveToElement(webElement).perform();
+            logger.info("moved and hovered on element");
+
+        } catch (Exception e){
+            stopTestAndPrintMessage();
+        }
+    }
 
     public boolean isElementDisplayed (WebElement webElement){
         try {
@@ -61,8 +74,6 @@ public class ActionsWithOurElements {
     }
 
     public boolean isTextInElement (WebElement webElement, String expectedText){
-        //boolean isText = Assert.assertTrue(webElement.getText().contains(expectedText));
-        //.//div[@class='row products-cards products__body']/div[1]//a[@class='title-product' and contains(text(), 'Думай и богатей')]
         try{
             boolean state = webElement.getText().contains(expectedText);
             logger.info("Is text in element -> " + state);
