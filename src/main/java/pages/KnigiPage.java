@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import parentPage.ParentPage;
 
 public class KnigiPage extends ParentPage {
-    @FindBy (xpath = "//div[@class='category__wall-block']/*[contains(text(), 'Бизнес')]")
+    @FindBy (xpath = ".//div[@class='category__wall-block']//*[contains(text(), 'Бизнес')]")
     private WebElement linkBusiness;
 //FilterSidebar:
     //checkbox "Акция"
