@@ -10,7 +10,7 @@ public class KnigiPage extends ParentPage {
     private WebElement linkBusiness;
 //FilterSidebar:
     //checkbox "Акция"
-    @FindBy (xpath = ".//input[@type='checkbox' and @id='iv-r16'")
+    @FindBy (xpath = ".//*[@class='ocf-option-values']//*[@class='form-check'][1]")
     private WebElement checkboxStock;
     @FindBy (xpath = ".//*[@class='noUi-handle noUi-handle-lower']")
     private WebElement sliderMinPrice;

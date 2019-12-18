@@ -18,13 +18,13 @@ url:                       https://lavkababuin.com/
 Search field:              .//button[@class='btn-search' and @type='submit']
 button "найти":            .//button[@class='btn-search']
 button "каталог товаров"   .//button[@id='btn-menu-catalog']
-menu "книги"               .//ul[@class=menu-catalog']//a[contains(text(),'Книги']
+menu "книги"               .//ul[@class=menu-catalog']//a[contains(text(),'Книги')]
 
 firstElementSearchResult:  .//div[@class='row products-cards products__body']/div[1]//a[@class='title-product']
 
 
 # Knigi
-link "бизнес"              .//div[@class='category__wall-block']/*[contains(text(), 'Бизнес')]
+link "бизнес"              .//div[@class='category__wall-block']//*[contains(text(), 'Бизнес')]
 
 FilterSidebar:
 checkboxStock "Акция"  .//input[@type='checkbox' and @id='iv-r16']
