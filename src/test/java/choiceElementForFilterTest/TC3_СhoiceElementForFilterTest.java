@@ -11,8 +11,6 @@ public class TC3_СhoiceElementForFilterTest extends AbstractParentTest {
         homePage.clickOnSubmenuKnigi();
         knigiPage.clickOnLinkBusiness();
         knigiPage.markCheckboxStock();
-//      knigiPage.setSliderMinPrice(200);
-//      knigiPage.setSliderMaxPrice(600);
 
         checkExpectedResult("book with filterStock not found", knigiPage.isElementStockDisplayed());
 

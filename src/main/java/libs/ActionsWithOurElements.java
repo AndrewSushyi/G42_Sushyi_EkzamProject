@@ -5,15 +5,20 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ActionsWithOurElements {
     WebDriver webDriver;
     Actions action;
+    WebDriverWait webDriverWait_10, webDriverWait_15;
     Logger logger = Logger.getLogger(getClass());
 
     public ActionsWithOurElements(WebDriver webDriver) {
         this.webDriver = webDriver;
         action = new Actions(webDriver);
+        webDriverWait_10 = new WebDriverWait(webDriver, 10);
+        webDriverWait_15 = new WebDriverWait(webDriver, 15);
     }
 
 // вынес из LoginPage
@@ -44,15 +49,28 @@ public class ActionsWithOurElements {
 
     public void clickOnElement (WebElement webElement){
         try {
+            webDriverWait_10.until(ExpectedConditions.elementToBeClickable(webElement));
             webElement.click();
             logger.info("Element was clicked");
+
 
         } catch (Exception e){
             stopTestAndPrintMessage();
         }
     }
+
 ///////////////
     public void hoverOnElement (WebElement webElement){
+        try {
+            action.moveToElement(webElement).perform();
+            logger.info("moved and hovered on element");
+
+        } catch (Exception e){
+            stopTestAndPrintMessage();
+        }
+    }
+
+    public void moveToElementAndHower(WebElement webElement) {
         try {
             action.moveToElement(webElement).perform();
             logger.info("moved and hovered on element");
@@ -73,9 +91,20 @@ public class ActionsWithOurElements {
         }
     }
 
-    public boolean isTextInElement (WebElement webElement, String expectedText){
+    public boolean isElementContainText(WebElement webElement, String expectedText){
         try{
             boolean state = webElement.getText().contains(expectedText);
+            logger.info("Is text in element -> " + state);
+            return state;
+
+        }catch (Exception e){
+            logger.info("Is text in element -> false");
+            return false;
+        }
+    }
+    public boolean isTextEqualElementText (WebElement webElement, String expectedText){
+        try{
+            boolean state = webElement.getText().equals(expectedText);
             logger.info("Is text in element -> " + state);
             return state;
 
@@ -91,4 +120,26 @@ public class ActionsWithOurElements {
     }
 
 
+
+
+    public boolean delete(WebElement webElement) {
+
+        try{
+            boolean state = webElement.isDisplayed();
+            if (state==true){
+                do {
+                    webElement.click();
+                    action.wait(5);
+                    state = webElement.isDisplayed();
+                }while (state);
+
+            }
+            state = !webElement.isDisplayed();
+            logger.info("All element deleted from Cart -> " + state);
+            return state;
+        }catch (Exception e){
+            logger.info("All element deleted from Cart -> false");
+            return false;
+        }
+    }
 }
