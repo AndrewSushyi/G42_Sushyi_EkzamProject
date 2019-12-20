@@ -19,21 +19,25 @@ Expected result:
 - under searchField shown books with title: думай и богатей
 
 -----------------------------------------------------------
-tc4_СhoiceElementForFilterTest
+tc3_СhoiceElementForFilterTest
 PreConditions: Authorized on site (like steps  tc1)
 - Go to https: https://lavkababuin.com
 - Click on button "каталог товаров"
 - Click on "Книги" in menu"
 - Click on "Бизнес" at thematic books content result
 - Click on checkBox "акция"
-- move left slider of cost to 200
-- move right slider to 600
 Expected result:
-- content result header:"бизнес акция от 200 до 400"
-- result have label "акция" и cost 200-600uah
+- result have label "акция"
 -----------------------------------------------------------
-tc5_DeleteFromCartTest
+tc4_DeleteFromCartTest
 PreConditions: Authorized on site (like steps  tc1)
-1 Go to https: https://lavkababuin.com
+- Go to https: https://lavkababuin.com
+!check: что Корзина выбранных товаров пуста
+- Click "купить" first book in products under title "Новинки"
+- Click "купить" first book in products under title "Новинки"
+!check: показано поп ап окно с двумя выбранными ранее книгами
+- delete selected books from pop up window "Корзина"
 Expected result:
+- pop up window "Корзина" есть надпись "корзина пуста"
+- закрыв pop up window "Корзина" в пиктограмке тоже цифра 0
 -----------------------------------------------------------
