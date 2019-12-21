@@ -7,19 +7,25 @@ public class TC4_DeleteFromCartTest extends AbstractParentTest {
     @Test
     public void deleteFromCartTest() {
         homePage.openPage("https://lavkababuin.com/");
-//1st proguct
+        homePage.clickOnCloseBanerButton();
+        //1st proguct
         homePage.moveToProductFirst();
+        homePage.pause(1000);
         homePage.clickOnBuyProductFirst();
-
-        homePage.moveToProductFirst();
-        homePage.clickOnBuyProductFirst();
-//2d product
+        homePage.pause(1000);
+        //2d proguct
         homePage.moveToProductSecond();
+        homePage.pause(1000);
         homePage.clickOnBuyProductSecond();
+        homePage.pause(2000);
+
+        homePage.deleteAllProductInCart();
+
+        homePage.pause(2000);
+
 
         homePage.closeCart();
-
-
+        homePage.pause(2000);
 
 
        //homePage.closeCart();

@@ -8,6 +8,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.concurrent.TimeUnit;
+
 public class ActionsWithOurElements {
     WebDriver webDriver;
     Actions action;
@@ -19,6 +21,21 @@ public class ActionsWithOurElements {
         action = new Actions(webDriver);
         webDriverWait_10 = new WebDriverWait(webDriver, 10);
         webDriverWait_15 = new WebDriverWait(webDriver, 15);
+    }
+
+    /*public void pause(Integer milliseconds) {
+        try {
+            action.wait(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }*/
+    public void pause(Integer milliseconds){
+        try {
+            TimeUnit.MILLISECONDS.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 // вынес из LoginPage
@@ -74,7 +91,6 @@ public class ActionsWithOurElements {
         try {
             action.moveToElement(webElement).perform();
             logger.info("moved and hovered on element");
-
         } catch (Exception e){
             stopTestAndPrintMessage();
         }
@@ -120,26 +136,21 @@ public class ActionsWithOurElements {
     }
 
 
-
-
-    public boolean delete(WebElement webElement) {
-
+    public void deleteAll(WebElement webElement) {
         try{
-            boolean state = webElement.isDisplayed();
-            if (state==true){
-                do {
-                    webElement.click();
-                    action.wait(5);
-                    state = webElement.isDisplayed();
-                }while (state);
+                boolean state = webElement.isDisplayed();
 
-            }
-            state = !webElement.isDisplayed();
-            logger.info("All element deleted from Cart -> " + state);
-            return state;
+                            do {
+                                webElement.click();
+                                pause(1000);
+                               // Assert.assertFalse(webElement.isDisplayed());
+                            }while (isElementDisplayed(webElement));
+            logger.info("vse ok - true");
+
         }catch (Exception e){
-            logger.info("All element deleted from Cart -> false");
-            return false;
+            logger.info("such Elements not found at CartPocupki or all needElementDeleted - False");
         }
     }
+
+
 }

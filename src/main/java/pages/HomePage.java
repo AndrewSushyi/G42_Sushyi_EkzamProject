@@ -3,9 +3,14 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import parentPage.ParentPage;
 
 public class HomePage extends ParentPage {
+    @FindBy(xpath = ".//*[@class='banner__wrap']//i[@class='fas fa-times']")
+    private WebElement closeBanerButton;
+    //
     @FindBy (xpath = ".//input[@name='search']")
     private WebElement inputSearch;
     @FindBy (xpath= ".//button[@class='btn-search']")
@@ -18,11 +23,13 @@ public class HomePage extends ParentPage {
     private WebElement submenuKnigi;
     //////////////////////////////////////////////////////////////////
     //product
-    @FindBy (xpath = ".//*[@class='bg-grey mt-5 module-latest']//div[@data-slick-index='0']")
-    private WebElement productFirst;
-    @FindBy (xpath =".//*[@class='bg-grey mt-5 module-latest']//div[@data-slick-index='1']" )
-    private WebElement productSecond;
+    //@FindBy (xpath = ".//*[@class='bg-grey mt-5 module-latest']//div[@data-slick-index='0']")
     @FindBy (xpath = ".//*[@class='bg-grey mt-5 module-latest']//*[@class='product-card slick-slide slick-current slick-active']//button[@class='btn-add-to-cart']")
+    private WebElement productFirst;
+   // @FindBy (xpath =".//*[@class='bg-grey mt-5 module-latest']//div[@data-slick-index='1']" )
+   @FindBy (xpath = ".//*[@class='bg-grey mt-5 module-latest']//*[@class='product-card slick-slide slick-active' and @data-slick-index='1']//button[@class='btn-add-to-cart']")
+   private WebElement productSecond;
+   @FindBy (xpath = ".//*[@class='bg-grey mt-5 module-latest']//*[@class='product-card slick-slide slick-current slick-active']//button[@class='btn-add-to-cart']")
     private WebElement productFirstBuy;
     @FindBy (xpath = ".//*[@class='bg-grey mt-5 module-latest']//*[@class='product-card slick-slide slick-active' and @data-slick-index='1']//button[@class='btn-add-to-cart']")
     private WebElement productSecondBuy;
@@ -38,8 +45,16 @@ public class HomePage extends ParentPage {
 
     public HomePage(WebDriver webDriver) {super(webDriver);}
 
+    public void pause (Integer milliseconds){actionsWithOurElements.pause(milliseconds);}
+
     public void openPage(String linkURL){
         actionsWithOurElements.openPage(linkURL);
+    }
+
+    public void clickOnCloseBanerButton() {
+        WebDriverWait webDriverWait = new WebDriverWait(webDriver, 10);
+        webDriverWait.until(ExpectedConditions.visibilityOf(closeBanerButton));
+        actionsWithOurElements.clickOnElement(closeBanerButton);
     }
 
     public void enterTextInToInputSearch(String text){
@@ -76,7 +91,7 @@ public class HomePage extends ParentPage {
         actionsWithOurElements.clickOnElement(productSecondBuy);
     }
     public void deleteAllProductInCart(){
-        actionsWithOurElements.delete(deleteProduct);
+        actionsWithOurElements.deleteAll(deleteProduct);
     }
     public void closeCart(){
         actionsWithOurElements.clickOnElement(closeCart);
