@@ -13,9 +13,9 @@ public class AccountPage extends ParentPage {
     public AccountPage(WebDriver webDriver) {
         super(webDriver);
     }
-// учим Страницу проверять наличия Элемента
+
     public boolean isUserBtnDisplayed(){
-      return actionsWithOurElements.isElementDisplayed(userBtn);
+        return actionsWithOurElements.isElementDisplayed(userBtn);
     }
 
 }

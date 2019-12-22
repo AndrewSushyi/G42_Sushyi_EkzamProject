@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.concurrent.TimeUnit;
 
 public class ActionsWithOurElements {
     WebDriver webDriver;
@@ -21,50 +22,39 @@ public class ActionsWithOurElements {
         webDriverWait_15 = new WebDriverWait(webDriver, 15);
     }
 
-// вынес из LoginPage
+    public void pause(Integer milliseconds){
+        try {
+            TimeUnit.MILLISECONDS.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void openPage(String  linkURL) {
         //т.к. действие то Обработаем сразу Экспшин
         try {
             webDriver.get(linkURL);
-
         }catch (Exception e){
             // именно в методе Open исп ассертФейл = безоговоречная остановка теста  т.к. не Открылась страница и дал.дейстивя не имеют смысла
             // это сообщение попадет в Отчет
             Assert.fail("can not work with browser");
         }
-
     }
-
     public void enterTextInToInput(WebElement webElement, String text){
         try {
             webElement.clear();
             webElement.sendKeys(text);
             logger.info(text + " was inputted in to input");
-
         } catch (Exception e){
             stopTestAndPrintMessage();
         }
-
     }
 
     public void clickOnElement (WebElement webElement){
         try {
             webDriverWait_10.until(ExpectedConditions.elementToBeClickable(webElement));
             webElement.click();
-            logger.info("Element was clicked");
-
-
-        } catch (Exception e){
-            stopTestAndPrintMessage();
-        }
-    }
-
-///////////////
-    public void hoverOnElement (WebElement webElement){
-        try {
-            action.moveToElement(webElement).perform();
-            logger.info("moved and hovered on element");
-
+            logger.info("Element" + webElement + " was clicked");
         } catch (Exception e){
             stopTestAndPrintMessage();
         }
@@ -74,7 +64,6 @@ public class ActionsWithOurElements {
         try {
             action.moveToElement(webElement).perform();
             logger.info("moved and hovered on element");
-
         } catch (Exception e){
             stopTestAndPrintMessage();
         }
@@ -96,18 +85,17 @@ public class ActionsWithOurElements {
             boolean state = webElement.getText().contains(expectedText);
             logger.info("Is text in element -> " + state);
             return state;
-
         }catch (Exception e){
             logger.info("Is text in element -> false");
             return false;
         }
     }
+
     public boolean isTextEqualElementText (WebElement webElement, String expectedText){
         try{
             boolean state = webElement.getText().equals(expectedText);
             logger.info("Is text in element -> " + state);
             return state;
-
         }catch (Exception e){
             logger.info("Is text in element -> false");
             return false;
@@ -119,27 +107,23 @@ public class ActionsWithOurElements {
         Assert.fail("Can not work with element ");
     }
 
-
-
-
-    public boolean delete(WebElement webElement) {
-
+//метод требует доработки: для проверки Отсутсвия элемента хотел исп. метод isDisplayed но он не подходит т.к. гененрирует эксешин когда элемент удален (что для меня true)
+    public boolean deleteAll(WebElement webElement) {
         try{
             boolean state = webElement.isDisplayed();
-            if (state==true){
-                do {
-                    webElement.click();
-                    action.wait(5);
-                    state = webElement.isDisplayed();
-                }while (state);
+            do {
+                webElement.click();
+                pause(1000);
+            }while (isElementDisplayed(webElement));
 
-            }
-            state = !webElement.isDisplayed();
-            logger.info("All element deleted from Cart -> " + state);
-            return state;
+            logger.info("vse Element was remove from Korzina - true");
+            return true;
         }catch (Exception e){
-            logger.info("All element deleted from Cart -> false");
+            logger.info("such Elements not found - False");
             return false;
         }
+
     }
+
+
 }
