@@ -30,8 +30,8 @@ public class AbstractParentTest {
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-        // Инициализируем переменную loginPage передавая выше созданный webdriver
-        // !! т.е. loginPage будет работать с единым webdriver созданным в Тесте
+       // Инициализируем переменную loginPage передавая выше созданный webdriver
+       // !! т.е. loginPage будет работать с единым webdriver созданным в Тесте
        // т.о. этот конструктор попал в Page и потом в ParrentPage
         loginPage = new LoginPage(webDriver);
         accountPage = new AccountPage(webDriver);
@@ -46,6 +46,5 @@ public class AbstractParentTest {
 
     protected void checkExpectedResult(String message, boolean actualResult) {
         Assert.assertEquals(message, true, actualResult);
-
     }
 }

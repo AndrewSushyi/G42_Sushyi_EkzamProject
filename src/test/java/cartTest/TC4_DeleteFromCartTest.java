@@ -17,24 +17,11 @@ public class TC4_DeleteFromCartTest extends AbstractParentTest {
         homePage.moveToProductSecond();
         homePage.pause(1000);
         homePage.clickOnBuyProductSecond();
-        homePage.pause(2000);
+        homePage.pause(1000);
 
         homePage.deleteAllProductInCart();
-
-        homePage.pause(2000);
-
-
         homePage.closeCart();
-        homePage.pause(2000);
 
-
-       //homePage.closeCart();
-
-
-
-        //homePage.checkValueCounterCartPictogram("0");
-        System.out.println("finish good");
+        checkExpectedResult("v Korzine nebilo knig ", homePage.checkValueCounterCartPictogram("0"));
     }
-
-
 }

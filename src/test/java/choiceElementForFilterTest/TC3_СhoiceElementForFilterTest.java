@@ -9,10 +9,10 @@ public class TC3_СhoiceElementForFilterTest extends AbstractParentTest {
         homePage.openPage("https://lavkababuin.com/");
         homePage.hoverOnButtonMenuCatalog();
         homePage.clickOnSubmenuKnigi();
+        knigiPage.clickOnCloseBanerButton();
         knigiPage.clickOnLinkBusiness();
         knigiPage.markCheckboxStock();
 
-        checkExpectedResult("book with filterStock not found", knigiPage.isElementStockDisplayed());
-
+        checkExpectedResult("book with filterStock not found", knigiPage.isLabelStockInproduct("Акция"));
     }
 }

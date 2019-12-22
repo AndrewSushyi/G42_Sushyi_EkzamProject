@@ -43,7 +43,11 @@ public class HomePage extends ParentPage {
     @FindBy (xpath = ".//div[@id='cart']//*[@class='count']")
     private  WebElement counterProductsOnPictogramCart;
 
-    public HomePage(WebDriver webDriver) {super(webDriver);}
+    String nameObject="";
+
+    public HomePage(WebDriver webDriver) {
+        super(webDriver);
+    }
 
     public void pause (Integer milliseconds){actionsWithOurElements.pause(milliseconds);}
 
@@ -60,21 +64,23 @@ public class HomePage extends ParentPage {
     public void enterTextInToInputSearch(String text){
         actionsWithOurElements.enterTextInToInput(inputSearch,text);
     }
-
     public void clickOnButtonSearch() {
         actionsWithOurElements.clickOnElement(buttonSearch);
     }
-
-    public void hoverOnButtonMenuCatalog(){actionsWithOurElements.hoverOnElement(menuCatalog);}
+    public void hoverOnButtonMenuCatalog(){
+        actionsWithOurElements.moveToElementAndHower(menuCatalog);
+    }
     public void clickOnSubmenuKnigi() {
         actionsWithOurElements.clickOnElement(submenuKnigi);
     }
-//
-    //
+///////
     public boolean isSearchWordsInSearchResult(String text){
         return actionsWithOurElements.isElementContainText(firstElementInSearchResult, text);
     }
     public boolean checkValueCounterCartPictogram(String text){
+        if (actionsWithOurElements.isTextEqualElementText(counterProductsOnPictogramCart, text)==true){
+            logger.info("  All books was deleted! Counter books in Korzina = " + counterProductsOnPictogramCart.getText());
+        }
         return  actionsWithOurElements.isTextEqualElementText(counterProductsOnPictogramCart, text);
     }
     public void moveToProductFirst () {
@@ -96,6 +102,4 @@ public class HomePage extends ParentPage {
     public void closeCart(){
         actionsWithOurElements.clickOnElement(closeCart);
     }
-    public void myWate (){}
-
 }
