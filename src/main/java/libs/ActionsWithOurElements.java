@@ -2,9 +2,11 @@ package libs;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
@@ -50,12 +52,25 @@ public class ActionsWithOurElements {
         }
     }
 
+    public void waitUntilAllJQueryWillBeFinished(){
+        new WebDriverWait(webDriver, 3000)
+                .until(new ExpectedCondition<Boolean>() {
+                    public Boolean apply(WebDriver driver) {
+                        JavascriptExecutor js = (JavascriptExecutor) driver;
+                        return (Boolean) js.executeScript("return jQuery.active == 0");
+                    }
+                });
+    }
+
     public void clickOnElement (WebElement webElement){
         try {
+            waitUntilAllJQueryWillBeFinished();
             webDriverWait_10.until(ExpectedConditions.elementToBeClickable(webElement));
             webElement.click();
+            waitUntilAllJQueryWillBeFinished();
             logger.info("Element" + webElement + " was clicked");
         } catch (Exception e){
+            logger.error(e);
             stopTestAndPrintMessage();
         }
     }
@@ -63,8 +78,10 @@ public class ActionsWithOurElements {
     public void moveToElementAndHower(WebElement webElement) {
         try {
             action.moveToElement(webElement).perform();
+            webDriverWait_10.until(ExpectedConditions.visibilityOf(webElement));
             logger.info("moved and hovered on element");
         } catch (Exception e){
+            logger.info(e);
             stopTestAndPrintMessage();
         }
     }
