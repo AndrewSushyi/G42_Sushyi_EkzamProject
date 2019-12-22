@@ -27,17 +27,16 @@ PreConditions: Authorized on site (like steps  tc1)
 - Click on "Бизнес" at thematic books content result
 - Click on checkBox "акция"
 Expected result:
-- result have label "акция"
+- in Content of result^ books have label "акция"
 -----------------------------------------------------------
 tc4_DeleteFromCartTest
 PreConditions: Authorized on site (like steps  tc1)
 - Go to https: https://lavkababuin.com
 !check: что Корзина выбранных товаров пуста
 - Click "купить" first book in products under title "Новинки"
-- Click "купить" first book in products under title "Новинки"
-!check: показано поп ап окно с двумя выбранными ранее книгами
+- Click "купить" second book in products under title "Новинки"
 - delete selected books from pop up window "Корзина"
+- close pop up window "Корзина"
 Expected result:
-- pop up window "Корзина" есть надпись "корзина пуста"
-- закрыв pop up window "Корзина" в пиктограмке тоже цифра 0
+- закрыв pop up window "Корзина" в пиктограмке корзины Счетчик наличия книг = 0
 -----------------------------------------------------------

@@ -3,9 +3,14 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import parentPage.ParentPage;
 
 public class KnigiPage extends ParentPage {
+    @FindBy(xpath = ".//*[@class='banner__wrap']//i[@class='fas fa-times']")
+    private WebElement closeBanerButton;
+
     @FindBy (xpath = ".//div[@class='category__wall-block']//*[contains(text(), 'Бизнес')]")
     private WebElement linkBusiness;
 //FilterSidebar:
@@ -24,19 +29,25 @@ public class KnigiPage extends ParentPage {
 
     public KnigiPage(WebDriver webDriver) {super(webDriver);}
 
+    public void clickOnCloseBanerButton() {
+        WebDriverWait webDriverWait = new WebDriverWait(webDriver, 10);
+        webDriverWait.until(ExpectedConditions.visibilityOf(closeBanerButton));
+        actionsWithOurElements.clickOnElement(closeBanerButton);
+    }
+
     public void clickOnLinkBusiness(){
         actionsWithOurElements.clickOnElement(linkBusiness);
     }
-
-
     public void markCheckboxStock() {
         actionsWithOurElements.clickOnElement(checkboxStock);
     }
-
-    public boolean isElementStockDisplayed() {
-        return actionsWithOurElements.isElementDisplayed(parameterStockInResult);
-    }
-    public boolean isElementPriceDisplayed() {
-        return actionsWithOurElements.isElementDisplayed(parameterPriceInResult);
+    public boolean isLabelStockInproduct (String label){
+        boolean isTextInLabel = actionsWithOurElements.isElementContainText(parameterStockInResult, label);
+        if (isTextInLabel){
+            logger.info("  in books result they have label:" + parameterStockInResult.getText());
+            return true;
+        }else {
+            logger.info("  in books result they DON`T have label:" + parameterStockInResult.getText());
+            return false;}
     }
 }
