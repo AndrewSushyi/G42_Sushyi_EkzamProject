@@ -14,8 +14,12 @@ public class ParentPage {
     public ParentPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         //чтоб каждый раз при Обращении к Странице Инициализи-ь ее переменные @FindBy
-        // this - это параметр = названию страницы
+        // this - это параметр =названию страницы
         PageFactory.initElements(webDriver, this);
         actionsWithOurElements = new ActionsWithOurElements(webDriver);
     }
+
+
+
+
 }

@@ -22,8 +22,6 @@ menu "книги"               .//ul[@class=menu-catalog']//a[contains(text(),'
 
 firstElementSearchResult:  .//div[@class='row products-cards products__body']/div[1]//a[@class='title-product']
 
-@FindBy (xpath = ".//*[@class='row products-cards products__body']/div[1]//*[@class='price']")
-private WebElement parameterPriceInResult;
 
 # Knigi
 link "бизнес"              .//div[@class='category__wall-block']//*[contains(text(), 'Бизнес')]
