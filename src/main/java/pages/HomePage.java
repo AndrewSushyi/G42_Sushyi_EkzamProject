@@ -45,6 +45,12 @@ public class HomePage extends ParentPage {
 
     String nameObject="";
 
+    @FindBy(xpath = "//div[@class='dropdown-menu show']//h3[text()='Корзина']")
+    private WebElement titleOfCart;
+
+    @FindBy(xpath = "//div[@class='dropdown-menu show']//h3//..//button//i[@class='fa fa-times-circle']")
+    private WebElement buttonCloseCart;
+
     public HomePage(WebDriver webDriver) {
         super(webDriver);
     }
@@ -91,10 +97,19 @@ public class HomePage extends ParentPage {
     }
     public void clickOnBuyProductFirst() {
         actionsWithOurElements.clickOnElement(productFirstBuy);
+
+        actionsWithOurElements.isElementDisplayed(titleOfCart);
+        actionsWithOurElements.isElementDisplayed(buttonCloseCart);
+        actionsWithOurElements.moveToElementAndHower(buttonCloseCart);
+        actionsWithOurElements.clickOnElement(buttonCloseCart);
+
     }
 
     public void clickOnBuyProductSecond() {
         actionsWithOurElements.clickOnElement(productSecondBuy);
+        actionsWithOurElements.isElementDisplayed(titleOfCart);
+        actionsWithOurElements.isElementDisplayed(buttonCloseCart);
+        actionsWithOurElements.moveToElementAndHower(buttonCloseCart);
     }
     public void deleteAllProductInCart(){
         actionsWithOurElements.deleteAll(deleteProduct);

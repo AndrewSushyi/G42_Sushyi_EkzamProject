@@ -10,14 +10,14 @@ public class TC4_DeleteFromCartTest extends AbstractParentTest {
         homePage.clickOnCloseBanerButton();
         //1st proguct
         homePage.moveToProductFirst();
-        homePage.pause(1000);
+//        homePage.pause(1000);
         homePage.clickOnBuyProductFirst();
-        homePage.pause(1000);
+//        homePage.pause(1000);
         //2d proguct
         homePage.moveToProductSecond();
-        homePage.pause(1000);
+//        homePage.pause(1000);
         homePage.clickOnBuyProductSecond();
-        homePage.pause(1000);
+//        homePage.pause(1000);
 
         homePage.deleteAllProductInCart();
         homePage.closeCart();
